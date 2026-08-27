@@ -1,0 +1,234 @@
+[gd_scene format=3 uid="uid://bqrekshi0m71s"]
+
+[ext_resource type="Script" uid="uid://bwajx5pge14aq" path="res://scripts/Main.gd" id="1_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://bwpibr0kyc7oe" path="res://scenes/eye_node.tscn" id="2_jyhfs"]
+[ext_resource type="Script" uid="uid://badfs5tq0k8m6" path="res://scripts/CanvasEditor.gd" id="2_sugp2"]
+[ext_resource type="Script" uid="uid://b1s77yxl75eu7" path="res://scripts/AviRecorder.gd" id="4_jyhfs"]
+
+[node name="Main" type="Control" unique_id=744182697 node_paths=PackedStringArray("sub_viewport", "base_sprite", "canvas_editor", "eye_container", "camera", "base_image_btn", "pupil_image_btn", "follower_image_btn", "clear_follower_btn", "rotate_follower_check", "follower_speed_slider", "add_template_btn", "remove_template_btn", "mode_option", "clear_points_btn", "move_type_option", "speed_slider", "sync_check", "is_animated_check", "template_item_list", "record_avi_btn", "avi_recorder", "base_file_dialog", "pupil_file_dialog", "follower_file_dialog", "save_avi_dialog")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0wfyh")
+sub_viewport = NodePath("HSplitContainer/LeftPanel/ViewportContainer/SubViewport")
+base_sprite = NodePath("HSplitContainer/LeftPanel/ViewportContainer/SubViewport/BaseSprite")
+canvas_editor = NodePath("HSplitContainer/LeftPanel/ViewportContainer/SubViewport/CanvasEditor")
+eye_container = NodePath("HSplitContainer/LeftPanel/ViewportContainer/SubViewport/EyeContainer")
+camera = NodePath("HSplitContainer/LeftPanel/ViewportContainer/SubViewport/Camera2D")
+base_image_btn = NodePath("HSplitContainer/RightPanel/BaseImageBtn")
+pupil_image_btn = NodePath("HSplitContainer/RightPanel/PupilImageBtn")
+follower_image_btn = NodePath("HSplitContainer/RightPanel/HBoxContainer/addfollowerBtn")
+clear_follower_btn = NodePath("HSplitContainer/RightPanel/HBoxContainer/delfollowerBtn")
+rotate_follower_check = NodePath("HSplitContainer/RightPanel/HBoxContainer/followerrotate")
+follower_speed_slider = NodePath("HSplitContainer/RightPanel/fospeedSlider")
+add_template_btn = NodePath("HSplitContainer/RightPanel/TemplateControlGroup/AddTemplateBtn")
+remove_template_btn = NodePath("HSplitContainer/RightPanel/TemplateControlGroup/RemoveTemplateBtn")
+mode_option = NodePath("HSplitContainer/RightPanel/ModeOptionButton")
+clear_points_btn = NodePath("HSplitContainer/RightPanel/ClearPointsBtn")
+move_type_option = NodePath("HSplitContainer/RightPanel/MoveTypeOption")
+speed_slider = NodePath("HSplitContainer/RightPanel/SpeedSlider")
+sync_check = NodePath("HSplitContainer/RightPanel/SyncCheck")
+is_animated_check = NodePath("HSplitContainer/RightPanel/movementcheck")
+template_item_list = NodePath("HSplitContainer/RightPanel/TemplateItemList")
+record_avi_btn = NodePath("HSplitContainer/RightPanel/record_avi_btn")
+avi_recorder = NodePath("AVIRE")
+base_file_dialog = NodePath("BaseFileDialog")
+pupil_file_dialog = NodePath("PupilFileDialog")
+follower_file_dialog = NodePath("followerFileDialog")
+save_avi_dialog = NodePath("AVIDialog")
+eye_node_scene = ExtResource("2_jyhfs")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="." unique_id=1122397588]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftPanel" type="PanelContainer" parent="HSplitContainer" unique_id=1076894179]
+custom_minimum_size = Vector2(850, 700)
+layout_mode = 2
+
+[node name="ViewportContainer" type="SubViewportContainer" parent="HSplitContainer/LeftPanel" unique_id=257786148]
+layout_mode = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="HSplitContainer/LeftPanel/ViewportContainer" unique_id=1510570453]
+handle_input_locally = false
+size = Vector2i(1508, 1080)
+render_target_update_mode = 4
+
+[node name="BaseSprite" type="Sprite2D" parent="HSplitContainer/LeftPanel/ViewportContainer/SubViewport" unique_id=1489588883]
+
+[node name="EyeContainer" type="Node2D" parent="HSplitContainer/LeftPanel/ViewportContainer/SubViewport" unique_id=1486198499]
+
+[node name="CanvasEditor" type="Node2D" parent="HSplitContainer/LeftPanel/ViewportContainer/SubViewport" unique_id=257750275]
+script = ExtResource("2_sugp2")
+
+[node name="Camera2D" type="Camera2D" parent="HSplitContainer/LeftPanel/ViewportContainer/SubViewport" unique_id=1864200346]
+
+[node name="RightPanel" type="VBoxContainer" parent="HSplitContainer" unique_id=1319983253]
+custom_minimum_size = Vector2(400, 700)
+custom_maximum_size = Vector2(400, -1)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="title" type="Label" parent="HSplitContainer/RightPanel" unique_id=789593207]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.39, 0.84749997, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "斜視meme自動化小工具"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="HSplitContainer/RightPanel" unique_id=1419914104]
+modulate = Color(0.91381556, 0, 0.18518025, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "使用前請認真閲讀使用説明（錄製可能爆内存"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BaseImageBtn" type="Button" parent="HSplitContainer/RightPanel" unique_id=1865447087]
+modulate = Color(0.40784314, 1, 0.74509805, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "上傳底圖"
+
+[node name="TemplateControlGroup" type="HBoxContainer" parent="HSplitContainer/RightPanel" unique_id=753083024]
+layout_mode = 2
+
+[node name="AddTemplateBtn" type="Button" parent="HSplitContainer/RightPanel/TemplateControlGroup" unique_id=1653227444]
+modulate = Color(1, 0.84313726, 0.39215687, 1)
+layout_mode = 2
+text = "+添加瞳孔模板"
+
+[node name="RemoveTemplateBtn" type="Button" parent="HSplitContainer/RightPanel/TemplateControlGroup" unique_id=1473939954]
+modulate = Color(1, 0.6156863, 0.39215687, 1)
+layout_mode = 2
+text = "-刪除瞳孔模板"
+
+[node name="TemplateItemList" type="ItemList" parent="HSplitContainer/RightPanel" unique_id=1595260162]
+modulate = Color(1, 0.84313726, 0.39215687, 1)
+layout_mode = 2
+auto_height = true
+
+[node name="PupilImageBtn" type="Button" parent="HSplitContainer/RightPanel" unique_id=1730525748]
+modulate = Color(1, 0.84313726, 0.39215687, 1)
+layout_mode = 2
+text = "上傳瞳孔素材"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/RightPanel" unique_id=1122030062]
+modulate = Color(0.95, 0.247, 0.43446648, 1)
+layout_mode = 2
+
+[node name="addfollowerBtn" type="Button" parent="HSplitContainer/RightPanel/HBoxContainer" unique_id=990635423]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "選擇/更換同步物圖片"
+
+[node name="delfollowerBtn" type="Button" parent="HSplitContainer/RightPanel/HBoxContainer" unique_id=458905452]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "清除同步物"
+
+[node name="followerrotate" type="CheckBox" parent="HSplitContainer/RightPanel/HBoxContainer" unique_id=1307908540]
+layout_mode = 2
+text = "同步物旋轉"
+
+[node name="fospeedlabel" type="Label" parent="HSplitContainer/RightPanel" unique_id=1187015060]
+modulate = Color(0.9490196, 0.24705882, 0.43529412, 1)
+layout_mode = 2
+text = "同步物旋轉速度"
+
+[node name="fospeedSlider" type="HSlider" parent="HSplitContainer/RightPanel" unique_id=71543962]
+modulate = Color(0.9490196, 0.24705882, 0.43529412, 1)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/RightPanel" unique_id=479088128]
+modulate = Color(0.859, 1, 0.060000002, 1)
+layout_mode = 2
+text = "工具模式"
+
+[node name="ModeOptionButton" type="OptionButton" parent="HSplitContainer/RightPanel" unique_id=1980249225]
+modulate = Color(0.85882354, 1, 0.05882353, 1)
+layout_mode = 2
+
+[node name="ClearPointsBtn" type="Button" parent="HSplitContainer/RightPanel" unique_id=1479659639]
+modulate = Color(1, 0.84333336, 0.060000002, 1)
+layout_mode = 2
+text = "清空當前模式劃定"
+
+[node name="Label2" type="Label" parent="HSplitContainer/RightPanel" unique_id=1224590412]
+modulate = Color(0.25, 1, 0.67499995, 1)
+layout_mode = 2
+text = "運動"
+
+[node name="MoveTypeOption" type="OptionButton" parent="HSplitContainer/RightPanel" unique_id=840646499]
+modulate = Color(0.2509804, 1, 0.6745098, 1)
+layout_mode = 2
+
+[node name="SpeedLabel" type="Label" parent="HSplitContainer/RightPanel" unique_id=902907060]
+modulate = Color(0.2509804, 1, 0.6745098, 1)
+layout_mode = 2
+text = "運動速度"
+
+[node name="SpeedSlider" type="HSlider" parent="HSplitContainer/RightPanel" unique_id=883995696]
+modulate = Color(0.2509804, 1, 0.6745098, 1)
+layout_mode = 2
+
+[node name="SyncCheck" type="CheckBox" parent="HSplitContainer/RightPanel" unique_id=735956193]
+modulate = Color(0.2509804, 1, 0.6745098, 1)
+layout_mode = 2
+text = "軌跡同步于模板1"
+
+[node name="movementcheck" type="CheckBox" parent="HSplitContainer/RightPanel" unique_id=1807351163]
+modulate = Color(0.2509804, 1, 0.6745098, 1)
+layout_mode = 2
+text = "啟用運動"
+
+[node name="record_avi_btn" type="Button" parent="HSplitContainer/RightPanel" unique_id=1611140558]
+modulate = Color(0.39770004, 0.6456967, 0.97, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "錄製AVI視頻（60fps底圖分辨率）"
+
+[node name="PanelContainer" type="PanelContainer" parent="HSplitContainer/RightPanel" unique_id=736980969]
+layout_mode = 2
+
+[node name="Label" type="RichTextLabel" parent="HSplitContainer/RightPanel/PanelContainer" unique_id=1093718632]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+text = "使用説明：本程序為vibecoding的娛樂產物，屎山堆積bug無數屬正常現象，大概不影響使用。你需要準備一張底圖（擦掉瞳孔虹膜的眼睛），底圖中每個眼睛對應的瞳孔素材（可以不一樣），以及每個瞳孔的同步物（可選，就是原meme裏那個準星）。請注意：製作素材時將瞳孔和同步物的中心對準png畫布的中心！
+請先上傳底圖，最後的視頻輸出畫布就是你的底圖，超出底圖邊界的一切物品不會出現在視頻畫布中。然後，上傳瞳孔素材（上限10個），可以點選增刪。每個眼睛都是分開編輯的，請務必在工作模式菜單中配置好中心點，遮罩和運動範圍。中心點是你素材png的中心，請把中心點放置在眼白中央，素材會自動吸附，中心點代表了瞳孔真正的碰撞體積。遮罩是一個套索工具，請放大畫布套住眼白區域，瞳孔的美術素材不會超出邊界，而同步物則不受影響。活動範圍是中心點的碰撞邊界，請根據需要自行繪製。若需要更改，直接在對應模式下清空重繪即可。滾輪縮放，右鍵平移。
+你可以為每個眼睛單獨配置運動方法，通過調整速度和運動邊界來改變視覺效果。儅開啓同步時，開啓的眼睛除中心點和遮罩外，會與模板1完全同步，可隨時取消。若不勾選啓用運動，則瞳孔靜止。
+本程序不會保存配置，每次重新打開都會清空素材和設置，所以請使用錄製avi視頻功能或使用外部錄屏軟件來記錄作品。按下錄製鍵選擇儲存位置並錄製（60fps），再按下結束，可以多次錄製。錄製到30秒自動停止並保存。不要使用超過2k分辨率的底圖，會被resize為1080p在開始配置之前，建議先上傳底圖然後測試能否錄製。請至少保留8g可用内存不然錄製時内存會爆掉。受底圖大小影響。
+作者：bilibili: koonytens 本程序及源碼會在github以及其他渠道發佈，隨意使用和修改，如遇到惡性bug或者其他問題，請在b站評論區和私信提出，提了我也不一定能解決orz祝你玩的愉快。"
+
+[node name="BaseFileDialog" type="FileDialog" parent="." unique_id=289678902]
+title = "Open a File"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.png", "*.jpg", "*.jpeg")
+
+[node name="PupilFileDialog" type="FileDialog" parent="." unique_id=475722501]
+title = "Open a File"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.png")
+
+[node name="AVIDialog" type="FileDialog" parent="." unique_id=1162567894]
+access = 2
+filters = PackedStringArray("*.avi")
+
+[node name="AVIRE" type="Node" parent="." unique_id=1426412894]
+script = ExtResource("4_jyhfs")
+
+[node name="followerFileDialog" type="FileDialog" parent="." unique_id=767768680]
+title = "Open a File"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.png")

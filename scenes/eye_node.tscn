@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bwpibr0kyc7oe"]
+
+[ext_resource type="Script" uid="uid://3xxmu0gyy320" path="res://scripts/EyeNode.gd" id="1_k25t2"]
+
+[node name="EyeNode" type="Node2D" unique_id=1445290095]
+script = ExtResource("1_k25t2")
+
+[node name="EyeMaskNode" type="Polygon2D" parent="." unique_id=96859736]
+clip_children = 1
+
+[node name="PupilSprite" type="Sprite2D" parent="EyeMaskNode" unique_id=1733627647]
+
+[node name="follower_sprite" type="Sprite2D" parent="." unique_id=656182446]
+
+[node name="DebugDraw" type="Node2D" parent="." unique_id=453063570]
